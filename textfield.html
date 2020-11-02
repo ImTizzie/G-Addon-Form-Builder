@@ -1,16 +1,15 @@
-<!-- The CSS package above applies Google styling to buttons and other elements. -->
-<div class="sidebar branding-below"><form>
+<!DOCTYPE html>
+<html><body>
+<div class="sidebar branding-below">
 <div class="block col-contain">
 <h1 class="col-one"><strong>Text Field</strong></h1>
 <p><strong>Field Name: </strong><textarea id="field-name" class="width-100" rows="1"></textarea></p>
-</div>
+</div></div>
 &nbsp;
 <p><strong>Max Response Length: </strong><textarea id="max-response" class="width-100" rows="1"></textarea></p>
 <div id="button-bar" class="block"><button id="select-characters" class="blue">Characters</button> or <button id="select-lines">Lines</button></div>
-</form></div>
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="is-graded" class="blue">Graded?</button></div>
-</form></div>
 <div class="col-one">&nbsp;</div>
 <p><strong>Points: </strong><textarea id="points" class="width-100" rows="1"></textarea></p>
 <div class="col-one">&nbsp;</div>
@@ -19,4 +18,34 @@
 <textarea id="correct-response" class="width-100" rows="10"></textarea>
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
-</form></div>
+
+
+<script>
+
+document.getElementById("is-graded").addEventListener("click",gradedButton);
+document.getElementById("create-and-place").addEventListener("click",create);
+document.getElementById("select-characters").addEventListener("click",charButton);
+document.getElementById("select-lines").addEventListener("click",linesButton);
+
+
+function gradedButton(){
+   alert("Pressing this button would indicate that this form element is graded. A boolean value would be set to true, and the points count in the corresponding text field would be stored");
+}
+
+function create(){
+  alert("Pressing this button would create the element and place it at the cursor");
+}
+
+function charButton(){
+  alert("Pressing this button would cause the add on to interpret the \"max response length\" as number of characters");
+}
+
+function linesButton(){
+  alert("Pressing this button would cause the add on to interpret the \"max response length\" as number of lines");
+}
+
+
+</script>
+
+
+</body></html>
