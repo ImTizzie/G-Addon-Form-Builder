@@ -22,7 +22,6 @@ function onOpen(e) {
       .addItem('Text Field', 'showTextFieldSidebar')
   .addItem('Multiple Choice', 'showMultipleChoiceSidebar')
   .addItem('Grading', 'showGradingSidebar')
-  .addItem('testing', 'showTesting')
   .addToUi();
 }
 

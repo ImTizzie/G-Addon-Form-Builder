@@ -11,7 +11,7 @@
 
 </form></div>
 <div class="col-one">&nbsp;</div>
-<div class="block"><button id="is-graded" class="blue" onlick="google.script.run.gradedButton()">Graded?</button></div>
+<div class="block"><button id="is-graded" class="blue">Graded?</button></div>
 
 <p><strong>Points: </strong><textarea id="points" class="width-100" rows="1"></textarea></p>
 <p><strong>Correct Response(s) (numbers, seperated by comma): </strong></p>
@@ -22,12 +22,17 @@
 
 <script>
 
-document.getElementById("is-graded").addEventListener("click",graded);
+document.getElementById("is-graded").addEventListener("click",gradedButton);
+document.getElementById("create-and-place").addEventListener("click",create);
 
-function graded(){
-var ui = DocumentApp.getUi();
-  ui.alert('graded');
+function gradedButton(){
+   alert("Pressing this button would indicate that this form element is graded. A boolean value would be set to true, and the points count in the corresponding text field would be stored");
 }
+
+function create(){
+  alert("Pressing this button would create the element and place it at the cursor");
+}
+
 
 </script>
 
