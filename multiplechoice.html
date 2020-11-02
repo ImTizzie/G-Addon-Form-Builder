@@ -1,4 +1,5 @@
-<!-- The CSS package above applies Google styling to buttons and other elements. -->
+<!DOCTYPE html>
+<html><body>
 <div class="sidebar branding-below"><form>
 <div class="block col-contain">
 <h1 class="col-one"><strong>Multiple Choice</strong></h1>
@@ -6,15 +7,29 @@
 </div>
 
 <p><strong>Max Choices: </strong><textarea id="max-response" class="width-100" rows="1"></textarea></p>
-<p><strong>Options (seperated by newline): </strong><textarea id="max-response" class="width-100" rows="10"></textarea></p>
+<p><strong>Options (seperated by newline): </strong><textarea id="options" class="width-100" rows="10"></textarea></p>
 
 </form></div>
 <div class="col-one">&nbsp;</div>
-<div class="block"><button id="is-graded" class="blue">Graded?</button></div>
-</form></div>
+<div class="block"><button id="is-graded" class="blue" onlick="google.script.run.gradedButton()">Graded?</button></div>
+
 <p><strong>Points: </strong><textarea id="points" class="width-100" rows="1"></textarea></p>
 <p><strong>Correct Response(s) (numbers, seperated by comma): </strong></p>
 <textarea id="correct-response" class="width-100" rows="1"></textarea>
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
-</form></div>
+
+
+<script>
+
+document.getElementById("is-graded").addEventListener("click",graded);
+
+function graded(){
+var ui = DocumentApp.getUi();
+  ui.alert('graded');
+}
+
+</script>
+
+
+</body></html>
