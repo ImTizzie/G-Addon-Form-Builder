@@ -219,20 +219,21 @@ function addMultipleChoice() {
   var listId;
   var item;
   
-  for(var ans in optionsAr){
-    if(questionNumStyle = 1)
-      item = body.appendListItem(ans).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.HOLLOW_BULLET);
+  for(var idx in optionsAr){
+    if(questionNumStyle == 1)
+      item = body.appendListItem(optionsAr[idx]).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.HOLLOW_BULLET);
     else
-      item = body.appendListItem(ans).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.LATIN_UPPER);
+      item = body.appendListItem(optionsAr[idx]).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.LATIN_UPPER);
     
-    if(optionsCnt == 0)
-      listId = item.getListId();
-    else
-      item.setListId(listId);
+    if(optionsCnt == 0){
+      item1 = item;
+      //Logger.log(item1.getListId());
+    } else
+      item.setListId(item1);
     
     optionsCnt++;
     if(optionsCnt == answerNum)
-      answers.push(ans);
+      answers.push(optionsAr[idx]);
   }
   
   
