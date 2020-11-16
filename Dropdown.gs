@@ -9,8 +9,8 @@
  */
 
 // global variables: 
-var questions;
-var answers;
+var questions = [];
+var answers = [];
 
 var questionStyle = {};
 questionStyle[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
