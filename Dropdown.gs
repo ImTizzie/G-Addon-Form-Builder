@@ -221,9 +221,9 @@ function addMultipleChoice() {
   
   for(var ans in optionsAr){
     if(questionNumStyle = 1)
-      item = body.appendListItem(ans).setAttributes(infoStyle).setGlyphType(HOLLOW_BULLET);
+      item = body.appendListItem(ans).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.HOLLOW_BULLET);
     else
-      item = body.appendListItem(ans).setAttributes(infoStyle).setGlyphType(LATIN_UPPER);
+      item = body.appendListItem(ans).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.LATIN_UPPER);
     
     if(optionsCnt == 0)
       listId = item.getListId();
