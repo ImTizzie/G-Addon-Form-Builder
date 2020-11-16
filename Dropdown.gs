@@ -133,10 +133,14 @@ function addTextField() {
   **************************************************/
   
   var question = "Question 1: This is a question?";
+  var ans = "Answer";
   var points = 10;
   var information = "This is extra detail for the question given. It’s possible that there might be additional instruction to be added for a good response. This is just a bunch of filler text that I have to fill up space.";
   var lines = 5;
   var partialCredit = false;
+  
+  questions.push(question);
+  answers.push(ans);
   
   /*************************************************
    * Creates the initial question, assigns the points,
@@ -242,8 +246,6 @@ function addMultipleChoice() {
   } else {
     body.appendParagraph('No Partial Credit').setAttributes(creditStyle).setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
   }
-  
-  table.setAttributes(infoStyle);
  
   /*************************************************
    * Saves and closes the document.
