@@ -232,7 +232,7 @@ function addMultipleChoice() {
     
     optionsCnt++;
     if(optionsCnt == answerNum)
-      answers.append(ans);
+      answers.push(ans);
   }
   
   
