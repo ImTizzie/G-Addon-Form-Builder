@@ -33,6 +33,16 @@ creditStyle[DocumentApp.Attribute.FOREGROUND_COLOR] = '#666666';
 creditStyle[DocumentApp.Attribute.SPACING_BEFORE] = 0;
 creditStyle[DocumentApp.Attribute.SPACING_AFTER] = 1;
 
+var titleStyle = {};
+titleStyle[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
+titleStyle[DocumentApp.Attribute.FONT_SIZE] = 18;
+titleStyle[DocumentApp.Attribute.FOREGROUND_COLOR] = '#000000';
+
+var headerStyle = {};
+headerStyle[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
+headerStyle[DocumentApp.Attribute.FONT_SIZE] = 11;
+headerStyle[DocumentApp.Attribute.FOREGROUND_COLOR] = '#000000';
+
 
 /**
  * Creates a menu entry in the Google Docs UI when the document is opened.
@@ -259,4 +269,43 @@ function addMultipleChoice() {
   **************************************************/
   
   doc.saveAndClose();
+}
+
+
+/*************************************************
+ * This function creates the Header
+ **************************************************/
+function addHeader() {
+  /*************************************************
+   * Obtains the document and gets the header section
+   * of the given document.
+  **************************************************/
+  
+  var doc = DocumentApp.getActiveDocument();
+  var header = doc.getHeader();
+  
+  /*************************************************
+   * Stores all the given variables necessary to
+   * customize the header.
+  **************************************************/
+  
+  var month = "11";
+  var year = 2020;
+  var day = 15;
+  var title = "Form/Quiz Title";
+  var name = "First Last";
+
+  /*************************************************
+   * Creates the header by adding name, date, and title
+  **************************************************/
+  
+  header.appendParagraph("Name: "+name+"\t\t\t\t\t\t\t\t").setAttributes(headerStyle).appendText("Date: "+month+"/"+day+"/"+year);
+  header.appendParagraph(title).setAttributes(titleStyle).setAlignment(DocumentApp.HorizontalAlignment.CENTER);
+  
+  /*************************************************
+   * Saves and closes the document.
+  **************************************************/
+  
+  doc.saveAndClose();   
+
 }
