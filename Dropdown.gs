@@ -309,3 +309,40 @@ function addHeader() {
   doc.saveAndClose();   
 
 }
+
+/*************************************************
+ * This function generates the answer sheet for the quiz.
+ **************************************************/
+
+function addAnswerSheet(){
+  
+  /*************************************************
+   * Obtains the document and gets the body section
+   * of the given document.
+   *************************************************/
+  
+  var doc = DocumentApp.getActiveDocument();
+  var body = doc.getBody();
+  
+  
+  questions.push("q1");
+  answers.push("a1");
+  
+  questions.push("q2");
+  answers.push("a2");
+  
+  questions.push("q3");
+  answers.push("a3");
+  
+  /* body.appendParagraph(questions.length);
+  /******************************************************************
+   * Loops through the questions and answers and adds it to the sheet 
+   ******************************************************************/
+  
+  for(var i = 0; i < questions.length; i++){
+    body.appendParagraph(questions[i]).setAttributes(questionStyle);
+    body.appendListItem(answers[i]).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.HOLLOW_BULLET);;
+  }
+  
+  doc.saveAndClose();
+}
