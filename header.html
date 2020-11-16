@@ -1,0 +1,44 @@
+<html>
+  <body>
+    <div class="sidebar branding-below">
+    <div class="block col-contain">
+    <h1 class="col-one"><strong>Header</strong></h1>
+    <p><strong>Form Title: </strong><textarea id="form-title" class="width-100" rows="1"></textarea></p>
+    </div></div>
+    <p><strong>Your Name: </strong><textarea id="user-name" class="width-100" rows="1"></textarea></p>
+
+    <p><strong>Today's Date:</strong></p>
+    <p><strong>Year: </strong><textarea id="year" class="width-100" rows="1"></textarea></p>
+    
+    <p><strong>Month: </strong>
+    <select name="" id="month">
+    <option value="0">January</option><option value="1">February</option><option value="2">March</option><option value="3">April</option>
+    <option value="4">May</option><option value="5">June</option><option value="6">July</option><option value="7">August</option>
+    <option value="8">September</option><option value="9">October</option><option value="10">Novenmer</option><option value="11">December</option>
+    </select>
+    
+    <strong> Day: </strong>
+    <select name="" id="day">
+        <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+        <option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+        <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
+        <option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+        <option value="21">21</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option>
+        <option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option>
+        <option value="30">30</option><option value="31">31</option>
+    </select></p>
+
+    
+    <div class="col-one">&nbsp;</div>
+    <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
+    
+    <script>
+    
+    document.getElementById("create-and-place").addEventListener("click",create);
+    function create(){
+        alert("Pressing this button would create the element");
+    }
+    </script>
+    
+  </body>
+</html>

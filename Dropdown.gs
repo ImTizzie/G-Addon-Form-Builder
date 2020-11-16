@@ -48,6 +48,7 @@ function onOpen(e) {
       .addItem('Text Field', 'showTextFieldSidebar')
   .addItem('Multiple Choice', 'showMultipleChoiceSidebar')
   .addItem('Grading', 'showGradingSidebar')
+  .addItem('Header', 'showHeaderSidebar')
   .addToUi();
 }
 
@@ -85,6 +86,12 @@ function showMultipleChoiceSidebar() {
 function showGradingSidebar() {
   var ui = HtmlService.createHtmlOutputFromFile('grading')
       .setTitle('Grading');
+  DocumentApp.getUi().showSidebar(ui);
+}
+
+function showHeaderSidebar() {
+  var ui = HtmlService.createHtmlOutputFromFile('header')
+      .setTitle('Header');
   DocumentApp.getUi().showSidebar(ui);
 }
 
