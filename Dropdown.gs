@@ -246,7 +246,7 @@ function addMultipleChoice() {
   } else {
     body.appendParagraph('No Partial Credit').setAttributes(creditStyle).setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
   }
- 
+
   /*************************************************
    * Saves and closes the document.
   **************************************************/
