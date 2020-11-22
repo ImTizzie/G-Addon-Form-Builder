@@ -4,37 +4,17 @@
 <body>
 <div class="sidebar branding-below">
 <div class="block col-contain">
-<h1 class="col-one"><strong>Grading</strong></h1>
-<div class="block"><p><button id="is-curved" class="blue">Curved?</button><textarea id="max-response" class="width-100" rows="1"></textarea></p></div>
-</div>
-<div class="block"><button id="select-percentage" class="blue">Percentage</button> or <button id="select-points">Points</button></div>
-</div>
+<h1 class="col-one"><strong>Answer Sheet</strong></h1>
 
-<div class="col-one">&nbsp;</div>
-<div class="block"><p><button id="partial-cred" class="blue">Partial credit for multiple choice?</button></p></div>
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
 
 <script>
 
-document.getElementById("is-curved").addEventListener("click",curvedButton);
-document.getElementById("select-percentage").addEventListener("click",percentageButton);
-document.getElementById("select-points").addEventListener("click",pointsButton);
-document.getElementById("partial-cred").addEventListener("click",partialButton);
+
 document.getElementById("create-and-place").addEventListener("click",create);
 
-function curvedButton(){
-   alert("Pressing this button would indicate that this quiz is curved. A boolean value would be set to true, and the value in the corresponding text field would be stored");
-}
-function percentageButton(){
-   alert("Pressing this button would indicate that this quiz is curved by a percentage that is input in the text field");
-}
-function pointsButton(){
-   alert("Pressing this button would indicate that this quiz is curved and the grade will be raised by the number that is input in the text field");
-}
-function partialButton(){
-   alert("Pressing this button would indicate that there is partial credit on the multiple choice.");
-}
+
 function create(){
   alert("Pressing this button would create the element and place it at the cursor");
 }

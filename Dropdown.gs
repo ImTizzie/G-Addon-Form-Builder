@@ -109,32 +109,6 @@ function showHeaderSidebar() {
  * This function creates the Text Field question.
  **************************************************/
 function addTextField() {
-  
-  /*************************************************
-   * These first three variables create the necessary
-   * styles needed to implement the text-field question.
-  **************************************************/
-  
-  var questionStyle = {};
-  questionStyle[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
-  questionStyle[DocumentApp.Attribute.FONT_SIZE] = 14;
-  questionStyle[DocumentApp.Attribute.FOREGROUND_COLOR] = '#000000';
-  questionStyle[DocumentApp.Attribute.SPACING_BEFORE] = 1;
-  questionStyle[DocumentApp.Attribute.SPACING_AFTER] = 0;
-  
-  var infoStyle = {};
-  infoStyle[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
-  infoStyle[DocumentApp.Attribute.FONT_SIZE] = 9;
-  infoStyle[DocumentApp.Attribute.FOREGROUND_COLOR] = '#000000';
-  infoStyle[DocumentApp.Attribute.SPACING_BEFORE] = 0;
-  infoStyle[DocumentApp.Attribute.SPACING_AFTER] = 1;
-  
-  var creditStyle = {};
-  creditStyle[DocumentApp.Attribute.FONT_FAMILY] = 'Arial';
-  creditStyle[DocumentApp.Attribute.FONT_SIZE] = 8;
-  creditStyle[DocumentApp.Attribute.FOREGROUND_COLOR] = '#666666';
-  creditStyle[DocumentApp.Attribute.SPACING_BEFORE] = 0;
-  creditStyle[DocumentApp.Attribute.SPACING_AFTER] = 1;
 
   /*************************************************
    * Obtains the document and gets the body section
