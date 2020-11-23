@@ -234,25 +234,19 @@ function addMultipleChoice(question, options, questionNumStyle, is_graded, point
 /*************************************************
  * This function creates the Header
  **************************************************/
-function addHeader() {
+function addHeader(month, year, day, title, name) {
   /*************************************************
    * Obtains the document and gets the header section
    * of the given document.
   **************************************************/
   
   var doc = DocumentApp.getActiveDocument();
-  var header = doc.getHeader();
-  
-  /*************************************************
-   * Stores all the given variables necessary to
-   * customize the header.
-  **************************************************/
-  
-  var month = "11";
-  var year = 2020;
-  var day = 15;
-  var title = "Form/Quiz Title";
-  var name = "First Last";
+  try{
+    var header = doc.addHeader();
+  } catch(e) {
+    var header = doc.getHeader();
+    header.clear();
+  }
 
   /*************************************************
    * Creates the header by adding name, date, and title

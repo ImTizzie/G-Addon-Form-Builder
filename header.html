@@ -32,11 +32,24 @@
     <div class="col-one">&nbsp;</div>
     <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
     
+    <div id = "output"></div>
     <script>
+
+    function onFailure(error){
+      var div = document.getElementById("output");
+      div.innerHTML = "ERROR: " + error.message;
+    }
     
     document.getElementById("create-and-place").addEventListener("click",create);
     function create(){
-        alert("Pressing this button would create the element");
+        month = document.getElementById("month").value;
+        year = document.getElementById("year").value;
+        day = document.getElementById("day").value;
+        title = document.getElementById("form-title").value;
+        name = document.getElementById("user-name").value;
+        
+        //alert("Pressing this button would create the element");
+        google.script.run.withFailureHandler(onFailure).addHeader(month, year, day, title, name);
     }
     </script>
     
