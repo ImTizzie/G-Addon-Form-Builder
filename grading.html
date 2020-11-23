@@ -8,15 +8,21 @@
 
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
-
+</div></div>
+<div id = "output"></div>
 <script>
 
 
 document.getElementById("create-and-place").addEventListener("click",create);
 
+function onFailure(error){
+  var div = document.getElementById("output");
+  div.innerHTML = "ERROR: " + error.message;
+}
 
 function create(){
   alert("Pressing this button would create the element and place it at the cursor");
+  google.script.run.withFailureHandler(onFailure).addAnswerSheet();
 }
 
 </script>

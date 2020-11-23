@@ -5,9 +5,10 @@
 <h1 class="col-one"><strong>Multiple Choice</strong></h1>
 <p><strong>Question: </strong><br><textarea id="question" class="width-100" rows="1"></textarea></p>
 </div>
-
 <p><strong>Options (seperated by comma): </strong><textarea id="options" class="width-100" rows="10"></textarea></p>
-
+<p><strong>Option type: </strong><br>
+<input type="radio" name="style" value="1"><label for="style">Checkbox</label><br>
+<input type="radio" name="style" value="2"><label for="style">Letter</label></p>
 </div>
 <div class="col-one">&nbsp;</div>
 <div class="block"><input type="checkbox" id="is-graded"><label for="is-graded">Graded?</label></div>
@@ -18,8 +19,13 @@
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
 
-
+<div id = "output"></div>
 <script>
+
+function onFailure(error){
+  var div = document.getElementById("output");
+  div.innerHTML = "ERROR: " + error.message;
+}
 
 document.getElementById("create-and-place").addEventListener("click",create);
 
@@ -27,16 +33,23 @@ document.getElementById("create-and-place").addEventListener("click",create);
 function create(){
   question = document.getElementById("question").value;
   options = document.getElementById("options").value;
+  style = 1;
   is_graded = document.getElementById("is-graded").checked;
   points = document.getElementById("points").value;
   correct = document.getElementById("correct-response").value;
+  
+  styleChoice = document.getElementsByName("style");
+  for(i=0; i<styleChoice.length; i++){
+    if(styleChoice[i].checked)
+      style = styleChoice[i].value;
+  }
   
   msg = "Question: " + question + "\nOptions: " + options + "\n";
   if(is_graded) {
     msg += "Points: " + points + "\nCorrect response: " + correct;
   }
-  alert(msg);
-  //google.script.run.addMultipleChoice();
+  //alert(msg);
+  google.script.run.withFailureHandler(onFailure).addMultipleChoice(question,options,style,is_graded,points,correct);
 }
 
 

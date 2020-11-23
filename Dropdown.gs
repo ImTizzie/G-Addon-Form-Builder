@@ -171,7 +171,7 @@ function addTextField() {
 /*************************************************
  * This function creates the Multiple Choice question.
  **************************************************/
-function addMultipleChoice() {
+function addMultipleChoice(question, options, questionNumStyle, is_graded, points, answerNum) {
    
   /*************************************************
    * Obtains the document and gets the body section
@@ -182,33 +182,21 @@ function addMultipleChoice() {
   var body = doc.getBody();
   
   /*************************************************
-   * Stores all the given variables necessary to
-   * customize the text-field question.
-  **************************************************/
-  
-  var question = "Question 1: This is a question?";
-  var points = 10;
-  var information = "This is extra detail for the question given. It’s possible that there might be additional instruction to be added for a good response. This is just a bunch of filler text that I have to fill up space.";
-  var options = "option1, option2, option3";
-  var questionNumStyle = 1;
-  var answerNum = 2;
-  var partialCredit = false;
-  
-  /*************************************************
    * Creates the initial question, assigns the points,
    * and adds the information text.
   **************************************************/
   
-  body.appendParagraph(question).setAttributes(questionStyle).appendText(' (' + points + ' pts)').setBold(true);
-  body.appendParagraph(information).setAttributes(infoStyle);
+  if(is_graded) body.appendParagraph(question).setAttributes(questionStyle).appendText(' (' + points + ' pts)').setBold(true);
+  else body.appendParagraph(question).setAttributes(questionStyle);
+  //body.appendParagraph(information).setAttributes(infoStyle);
   
   /************************************************
    * Creates bulleted list based on variable given.
   *************************************************/
   
-  questions.push(question);
+  if(is_graded) questions.push(question);
   
-  
+  //console.log("here");
   var optionsAr = options.split(",");
   var optionsCnt = 0;
   var listId;
@@ -222,21 +210,18 @@ function addMultipleChoice() {
     
     if(optionsCnt == 0){
       item1 = item;
-      //Logger.log(item1.getListId());
     } else
       item.setListId(item1);
     
     optionsCnt++;
-    if(optionsCnt == answerNum)
+    if(optionsCnt == answerNum && is_graded){
       answers.push(optionsAr[idx]);
+      //console.log(optionsAr[idx]);
+    }
   }
   
+  //body.appendParagraph(questions.length);
   
-  if(partialCredit == true) {
-    body.appendParagraph('Partial Credit').setAttributes(creditStyle).setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
-  } else {
-    body.appendParagraph('No Partial Credit').setAttributes(creditStyle).setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
-  }
 
   /*************************************************
    * Saves and closes the document.
@@ -299,14 +284,14 @@ function addAnswerSheet(){
   var body = doc.getBody();
   
   
-  questions.push("q1");
+  /*questions.push("q1");
   answers.push("a1");
   
   questions.push("q2");
   answers.push("a2");
   
   questions.push("q3");
-  answers.push("a3");
+  answers.push("a3");*/
   
   /* body.appendParagraph(questions.length);
   /******************************************************************
