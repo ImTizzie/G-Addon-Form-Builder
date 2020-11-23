@@ -3,34 +3,40 @@
 <div class="sidebar branding-below">
 <div class="block col-contain">
 <h1 class="col-one"><strong>Multiple Choice</strong></h1>
-<p><strong>Question: </strong><textarea id="question" class="width-100" rows="1"></textarea></p>
+<p><strong>Question: </strong><br><textarea id="question" class="width-100" rows="1"></textarea></p>
 </div>
 
 <p><strong>Options (seperated by comma): </strong><textarea id="options" class="width-100" rows="10"></textarea></p>
 
 </div>
 <div class="col-one">&nbsp;</div>
-<div class="block"><input type="radio" id="is-graded" class="blue"><label for="is-graded">Graded?</label></div>
+<div class="block"><input type="checkbox" id="is-graded"><label for="is-graded">Graded?</label></div>
 
-<p><strong>Points: </strong><textarea id="points" class="width-100" rows="1"></textarea></p>
+<p><strong>Points: </strong><input type="text" id="points" class="width-100" rows="1"></p>
 <p><strong>Correct Response(s) (numbers, seperated by comma): </strong></p>
-<textarea id="correct-response" class="width-100" rows="1"></textarea>
+<input type="text" id="correct-response" class="width-100" rows="1">
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
 
 
 <script>
 
-document.getElementById("is-graded").addEventListener("click",gradedButton);
 document.getElementById("create-and-place").addEventListener("click",create);
 
-function gradedButton(){
-   alert("Pressing this button would indicate that this form element is graded. A boolean value would be set to true, and the points count in the corresponding text field would be stored");
-}
 
 function create(){
-  alert("Pressing this button would create the element and place it");
-  google.script.run.addMultipleChoice();
+  question = document.getElementById("question").value;
+  options = document.getElementById("options").value;
+  is_graded = document.getElementById("is-graded").checked;
+  points = document.getElementById("points").value;
+  correct = document.getElementById("correct-response").value;
+  
+  msg = "Question: " + question + "\nOptions: " + options + "\n";
+  if(is_graded) {
+    msg += "Points: " + points + "\nCorrect response: " + correct;
+  }
+  alert(msg);
+  //google.script.run.addMultipleChoice();
 }
 
 
