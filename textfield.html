@@ -6,8 +6,8 @@
 <p><strong>Question: </strong><textarea id="question" class="width-100" rows="1"></textarea></p>
 </div></div>
 &nbsp;
-<p><strong>Max Response Length: </strong><textarea id="max-response" class="width-100" rows="1"></textarea></p>
-<div id="button-bar" class="block"><button id="select-characters" class="blue">Characters</button> or <button id="select-lines">Lines</button></div>
+<p><strong>Max Response Length:  </strong>(lines given for input)<textarea id="max-response" class="width-100" rows="1"></textarea></p>
+
 <div class="col-one">&nbsp;</div>
 <div class="block"><input type="radio" id="is-graded" class="blue"><label for="is-graded">Graded?</label></div>
 <div class="col-one">&nbsp;</div>
@@ -19,13 +19,15 @@
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
 
+ <div id = "output"></div>
+    <script>
 
-<script>
-
+ function onFailure(error){
+   var div = document.getElementById("output");
+   div.innerHTML = "ERROR: " + error.message;
+ }
 document.getElementById("is-graded").addEventListener("click",gradedButton);
 document.getElementById("create-and-place").addEventListener("click",create);
-document.getElementById("select-characters").addEventListener("click",charButton);
-document.getElementById("select-lines").addEventListener("click",linesButton);
 
 
 function gradedButton(){
@@ -33,15 +35,12 @@ function gradedButton(){
 }
 
 function create(){
-  alert("Pressing this button would create the element and place it at the cursor");
-}
-
-function charButton(){
-  alert("Pressing this button would cause the add on to interpret the \"max response length\" as number of characters");
-}
-
-function linesButton(){
-  alert("Pressing this button would cause the add on to interpret the \"max response length\" as number of lines");
+  question = document.getElementById("question").value;
+  response = document.getElementById("max-response").value;
+  answer = document.getElementById("correct-response").value;
+  points = document.getElementById("points").value;
+  is_graded = document.getElementById("is-graded").checked;
+  google.script.run.withFailureHandler(onFailure).addTextField(question,response,answer,points,is_graded);
 }
 
 

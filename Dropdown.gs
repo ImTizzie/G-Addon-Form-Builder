@@ -108,7 +108,7 @@ function showHeaderSidebar() {
 /*************************************************
  * This function creates the Text Field question.
  **************************************************/
-function addTextField() {
+function addTextField(title,response,answer,points,is_graded) {
 
   /*************************************************
    * Obtains the document and gets the body section
@@ -123,23 +123,23 @@ function addTextField() {
    * customize the text-field question.
   **************************************************/
   
-  var question = "Question 1: This is a question?";
-  var ans = "Answer";
-  var points = 10;
-  var information = "This is extra detail for the question given. It’s possible that there might be additional instruction to be added for a good response. This is just a bunch of filler text that I have to fill up space.";
-  var lines = 5;
-  var partialCredit = false;
+  var question = title;
+  var ans = answer;
+  var points = points;
+  var lines = response;
   
-  questions.push(question);
-  answers.push(ans);
-  
-  /*************************************************
+  if(is_graded) {
+    questions.push(question);
+    answers.push(ans);
+    body.appendParagraph(question).setAttributes(questionStyle).appendText(' (' + points + ' pts)').setBold(true);
+  }else{
+      /*************************************************
    * Creates the initial question, assigns the points,
    * and adds the information text.
   **************************************************/
   
-  body.appendParagraph(question).setAttributes(questionStyle).appendText(' (' + points + ' pts)').setBold(true);
-  body.appendParagraph(information).setAttributes(infoStyle);
+  body.appendParagraph(question).setAttributes(questionStyle).setBold(true);
+  }
   
   /*************************************************
    * Creates a table based on the variables given.
@@ -152,11 +152,6 @@ function addTextField() {
     var td = tr.appendTableCell();
   }
   
-  if(partialCredit == true) {
-    body.appendParagraph('Partial Credit').setAttributes(creditStyle).setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
-  } else {
-    body.appendParagraph('No Partial Credit').setAttributes(creditStyle).setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
-  }
   
   table.setAttributes(infoStyle);
  
