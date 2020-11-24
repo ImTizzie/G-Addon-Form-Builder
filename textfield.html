@@ -20,6 +20,11 @@ textarea{
   border: 2px solid #616161;
   border-radius: 4px;
 }
+input[type=text]{
+  border: 2px solid #616161;
+  border-radius: 4px;
+}
+
 </style></head>
 <body>
 <div class="sidebar branding-below">
@@ -28,15 +33,14 @@ textarea{
 <p><strong>Question: </strong><textarea id="question" class="width-100" rows="1"></textarea></p>
 </div></div>
 &nbsp;
-<p><strong>Max Response Length:  </strong>(lines given for input)<textarea id="max-response" class="width-100" rows="1"></textarea></p>
+<p><strong>Max Response Length:  </strong><br>(lines given for input)<br><input type="text" id="max-response" class="width-100" rows="1"></p>
 
 <div class="col-one">&nbsp;</div>
-<div class="block"><input type="radio" id="is-graded" class="blue"><label for="is-graded">Graded?</label></div>
+<div class="block"><input type="checkbox" id="is-graded" class="blue"><label for="is-graded">Graded?</label></div>
 <div class="col-one">&nbsp;</div>
-<p><strong>Points: </strong><textarea id="points" class="width-100" rows="1"></textarea></p>
+<p><strong>Points: </strong><input type="text" id="points" class="width-100" rows="1"></p>
 <div class="col-one">&nbsp;</div>
 <p><strong>Correct Response: </strong></p>
-<div class="col-one">&nbsp;</div>
 <textarea id="correct-response" class="width-100" rows="10"></textarea>
 <div class="col-one">&nbsp;</div>
 <div class="block"><button id="create-and-place" class="blue">Create and Place</button></div>
@@ -48,13 +52,9 @@ textarea{
    var div = document.getElementById("output");
    div.innerHTML = "ERROR: " + error.message;
  }
-document.getElementById("is-graded").addEventListener("click",gradedButton);
+
 document.getElementById("create-and-place").addEventListener("click",create);
 
-
-function gradedButton(){
-   alert("Pressing this button would indicate that this form element is graded. A boolean value would be set to true, and the points count in the corresponding text field would be stored");
-}
 
 function create(){
   question = document.getElementById("question").value;
