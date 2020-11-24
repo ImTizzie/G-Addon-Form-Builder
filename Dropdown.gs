@@ -1,12 +1,3 @@
-/**
- * @OnlyCurrentDoc
- *
- * The above comment directs Apps Script to limit the scope of file
- * access for this add-on. It specifies that this add-on will only
- * attempt to read or modify the files in which the add-on is used,
- * and not all of the user's files. The authorization request message
- * presented to users will reflect this limited scope.
- */
 
 // global variables: 
 var questions = [];
@@ -57,7 +48,7 @@ function onOpen(e) {
   DocumentApp.getUi().createAddonMenu()
       .addItem('Text Field', 'showTextFieldSidebar')
   .addItem('Multiple Choice', 'showMultipleChoiceSidebar')
-  .addItem('Grading', 'showGradingSidebar')
+  //.addItem('Grading', 'showGradingSidebar')
   .addItem('Header', 'showHeaderSidebar')
   .addToUi();
 }
@@ -154,6 +145,13 @@ function addTextField(title,response,answer,points,is_graded) {
   
   
   table.setAttributes(infoStyle);
+  
+  if(is_graded){ // adds answer sheet if needed
+    for(var i = 0; i < questions.length; i++){
+      body.appendParagraph(questions[i]).setAttributes(questionStyle);
+      body.appendListItem(answers[i]).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.HOLLOW_BULLET);;
+    }
+  }
  
   /*************************************************
    * Saves and closes the document.
@@ -183,7 +181,6 @@ function addMultipleChoice(question, options, questionNumStyle, is_graded, point
   
   if(is_graded) body.appendParagraph(question).setAttributes(questionStyle).appendText(' (' + points + ' pts)').setBold(true);
   else body.appendParagraph(question).setAttributes(questionStyle);
-  //body.appendParagraph(information).setAttributes(infoStyle);
   
   /************************************************
    * Creates bulleted list based on variable given.
@@ -191,7 +188,6 @@ function addMultipleChoice(question, options, questionNumStyle, is_graded, point
   
   if(is_graded) questions.push(question);
   
-  //console.log("here");
   var optionsAr = options.split(",");
   var optionsCnt = 0;
   var listId;
@@ -211,11 +207,15 @@ function addMultipleChoice(question, options, questionNumStyle, is_graded, point
     optionsCnt++;
     if(optionsCnt == answerNum && is_graded){
       answers.push(optionsAr[idx]);
-      //console.log(optionsAr[idx]);
     }
   }
   
-  //body.appendParagraph(questions.length);
+  if(is_graded){ // adds answer sheet if needed
+    for(var i = 0; i < questions.length; i++){
+      body.appendParagraph(questions[i]).setAttributes(questionStyle);
+      body.appendListItem(answers[i]).setAttributes(infoStyle).setGlyphType(DocumentApp.GlyphType.HOLLOW_BULLET);;
+    }
+  }
   
 
   /*************************************************
@@ -272,15 +272,6 @@ function addAnswerSheet(){
   var doc = DocumentApp.getActiveDocument();
   var body = doc.getBody();
   
-  
-  /*questions.push("q1");
-  answers.push("a1");
-  
-  questions.push("q2");
-  answers.push("a2");
-  
-  questions.push("q3");
-  answers.push("a3");*/
   
   /* body.appendParagraph(questions.length);
   /******************************************************************
